@@ -1,22 +1,23 @@
-Il progetto è diviso in tre notebook autonomi. Qui una breve descrizione:
+Le projet est divisé en trois notebooks autonomes. Voici une brève description :
 
-1. AI_Agents_Project_Data_Treatment: utilizzato per il trattamento preliminare dei dataset (modulo 3);
-2. AI_Agents_Project_Data_Analysis: utilizzato per ottenere informazioni preliminari sui dataset trattati e per la loro pulizia da righe presentanti violazioni dei requisiti indicati nelle guidelines. Utilizzato anche in seguito per l'analisi automatica dei risultati (Modulo 5).
-3. AGNO_Pipeline : Il framework vero e proprio è contenuto qui: contiene anche buona parte delle definizioni incluse in AI_Agents_Project_Data_Treatment per renderlo totalmente autonomo (Moduli 1,2,4).
+AI_Agents_Project_Data_Treatment : utilisé pour le traitement préliminaire des jeux de données (module 3) ;
 
+AI_Agents_Project_Data_Analysis : utilisé pour obtenir des informations préliminaires sur les jeux de données traités et pour leur nettoyage des lignes présentant des violations des exigences indiquées dans les guidelines. Utilisé également par la suite pour l’analyse automatique des résultats (module 5).
 
+AGNO_Pipeline : le framework proprement dit est contenu ici ; il inclut également une grande partie des définitions présentes dans AI_Agents_Project_Data_Treatment afin de le rendre totalement autonome (modules 1, 2, 4).
 
-NOTA: nonostante l'utilizzo di notebook Colab non sia una buona norma, è stato preferito per la possibilità di appoggiarsi a GPU particolarmente potenti (sono state utilizzate una T4 e successivamente una A100) e per la possibilità di utilizzare i modelli in "locale" all'interno del runtime, appoggiandosi a un server auto-hostato con Ollama, nativamente compatibile con Agno, sganciandoci completamente da limitazioni di API calls (ex. HuggingFace).
+NOTE : bien que l’utilisation de notebooks Colab ne soit pas une bonne pratique, ce choix a été privilégié pour la possibilité de s’appuyer sur des GPU particulièrement puissants (une T4 puis une A100 ont été utilisées) et pour la possibilité d’utiliser les modèles « en local » au sein du runtime, en s’appuyant sur un serveur auto-hébergé avec Ollama, nativement compatible avec Agno, nous détachant ainsi complètement des limitations liées aux appels API (ex. HuggingFace).
 
-Segue una breve discussione delle 5 consegne richieste, con eventuali problematiche riscontrate o fonti da consultare.
+S’ensuit une brève discussion des 5 livrables demandés, avec les éventuelles problématiques rencontrées ou les sources à consulter.
 
-Modulo 1: dati disponibili in xxx
+Livrable 1 : données disponibles dans data_evaluated.
 
-Modulo 2: i prompt forniti si sono dimostrati efficaci per 3 modelli su 4, con la sola eccezione di Falcon 7B, che ha sistematicamente fallito ogni test che gli è stato sottoposto, indipendentemente dal testo. Nonostante non sia stato effettuato prompt engineering specifico, il modello ha fallito ogni singola volta anche quando applicato al Test Agent presente in Agno_Pipeline, col solo scopo di rispondere alla domanda "Are you online?". Tra le risposte abbiamo ottenuto garbage text, risposte non pertinenti o a volta una totale mancanza di generazioni dei token di risposta. L'ipotesi è che Falcon 7B non sia adatto a task conversazionali, richiedendo un prompt engineering estremamente specifico. Tutti gli altri modelli hanno seguito correttamente le task fornite e comunicato in maniera abbastanza efficace, registrando comunque differenze "comportamentali" nella gestione dei compiti. Da notare come nessuno dei test fatti sia stato tuttavia un successo pieno (7 metriche su 7, lunghezza rispettata).
+Livrable 2 : les prompts fournis se sont révélés efficaces pour 3 modèles sur 4, à la seule exception de Falcon 7B, qui a systématiquement échoué à tous les tests auxquels il a été soumis, indépendamment du texte. Bien qu’aucun prompt engineering spécifique n’ait été effectué, le modèle a échoué à chaque fois, y compris lorsqu’il a été appliqué au Test Agent présent dans AGNO_Pipeline, dont le seul objectif était de répondre à la question « Are you online? ». Parmi les réponses obtenues, on trouve du texte parasite, des réponses non pertinentes ou parfois une absence totale de génération de tokens de réponse. L’hypothèse est que Falcon 7B n’est pas adapté aux tâches conversationnelles, nécessitant un prompt engineering extrêmement spécifique. Tous les autres modèles ont correctement suivi les tâches fournies et communiqué de manière assez efficace, tout en présentant des différences « comportementales » dans la gestion des tâches. Il convient de noter qu’aucun des tests réalisés n’a toutefois constitué un succès total (7 métriques sur 7, longueur respectée).
+Données dans Agents_Project_Traces.
 
-Modulo 3: file JSONL differenziati per dataset e modello sono visibili da xxx. I file di testing sono stati effettuati sullo stesso dataset. Da notare che numerosi altri test sono stati effettuati oltre a quelli documentati, ma il sistema di tracciamento con output in JSONL non era stato ancora implementato. 
+Livrable 3 : des fichiers JSONL différenciés par jeu de données et par modèle sont visibles dans xxx. Les fichiers de test ont été réalisés sur le même jeu de données. À noter que de nombreux autres tests ont été effectués en plus de ceux documentés, mais que le système de traçage avec sortie en JSONL n’était pas encore implémenté.
 
-Modulo 4: segue l'analisi manuale delle prime 12 righe del dataset adv_ele per ognuno dei 4 modelli:
+Livrable 4 : suit l’analyse manuelle des 12 premières lignes du jeu de données adv_ele pour chacun des 4 modèles :
 
 Scénario 1 : Le litige autour du domaine .amazon
 
@@ -122,7 +123,7 @@ Scénario 11 : Changement climatique et pays pauvres
 
 Falcon 7b : Échec critique. Boucle de « [TEXT] - [TEXT]… ».
 
-Llama 3.1 8b : Générique. Il parle « d’effets dévastateurs » et de « futur durable », des formules correctes mais un peu clichés par rapport au texte original plus spécifique.
+Llama 3.1 8b : Générique. Il parle « d’effets dévastateurs » et de « futur durable », des formules correctes mais quelque peu clichés par rapport au texte original plus spécifique.
 
 Mistral 7b : Hallucination partielle. Il cite un rapport du GIEC de « septembre 2013 » à Stockholm. Bien que plausible dans le contexte historique, il s’agit d’un détail très spécifique ajouté par le modèle (risque factuel).
 
@@ -138,4 +139,4 @@ Mistral 7b : Analytique. Il introduit correctement le facteur du « gaz de schis
 
 Qwen 2.5 7b : Factuel. Il se concentre sur les bénéfices de l’efficacité énergétique pour réduire la consommation de charbon, en restant fidèle au texte.
 
-Modulo 5: dati e metriche disponibili in xxx
+Livrable 5 : données et métriques disponibles dans Agents_Project_Traces.
