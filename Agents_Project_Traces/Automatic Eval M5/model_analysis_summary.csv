@@ -1,0 +1,9 @@
+Metric,Best Model,Best Value,Worst Model,Worst Value
+Cosine Similarity,trace_CLEANED_final_complexity_ose_adv_int_llama3.1_8b.jsonl,0.8085,trace_CLEANED_final_complexity_ose_adv_ele_falcon_7b.jsonl,0.1194
+MTLD,trace_CLEANED_final_complexity_ose_adv_int_falcon_7b.jsonl,50.00%,trace_CLEANED_final_complexity_ose_adv_ele_llama3.1_8b.jsonl,8.33%
+LD,trace_CLEANED_final_complexity_ose_adv_int_mistral_7b.jsonl,66.67%,trace_CLEANED_final_complexity_ose_adv_int_llama3.1_8b.jsonl,25.00%
+LS,trace_CLEANED_final_complexity_ose_adv_ele_falcon_7b.jsonl,0.00%,trace_CLEANED_final_complexity_ose_adv_ele_falcon_7b.jsonl,0.00%
+MDD,trace_CLEANED_final_complexity_ose_adv_ele_qwen2.5_7b-instruct-q4_K_M.jsonl,83.33%,trace_CLEANED_final_complexity_ose_adv_int_falcon_7b.jsonl,0.00%
+CS,trace_CLEANED_final_complexity_ose_adv_ele_qwen2.5_7b-instruct-q4_K_M.jsonl,83.33%,trace_CLEANED_final_complexity_ose_adv_int_falcon_7b.jsonl,0.00%
+LC,trace_CLEANED_final_complexity_ose_adv_ele_llama3.1_8b.jsonl,100.00%,trace_CLEANED_final_complexity_ose_adv_ele_falcon_7b.jsonl,50.00%
+CoH,trace_CLEANED_final_complexity_ose_adv_ele_llama3.1_8b.jsonl,91.67%,trace_CLEANED_final_complexity_ose_adv_ele_falcon_7b.jsonl,41.67%
