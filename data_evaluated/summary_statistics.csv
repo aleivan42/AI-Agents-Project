@@ -1,0 +1,5 @@
+File,Righe Totali,Scarti (Violazioni),Media Parole (S),Media Parole (C),Media Token (S),Media Token (C),Mediana Token (S),Mediana Token (C),Token più lunghi (S),Token più lunghi (C),Dominanza OK
+final_complexity_vikidia.csv,1186,65,715.2,6565.7,723.5,6700.3,408.0,6026.0,6411,23481,94.52%
+final_complexity_swipe.csv,1186,65,715.2,6565.7,723.5,6700.3,408.0,6026.0,6411,23481,94.52%
+final_complexity_ose_adv_int.csv,189,6,676.9,824.8,677.7,829.5,690.0,824.0,1080,1387,96.83%
+final_complexity_ose_adv_ele.csv,189,10,534.6,824.8,538.0,829.5,548.0,824.0,896,1387,94.71%
